@@ -1,14 +1,11 @@
-pipeline {
- agent any
+stage('Build Image') {
+    steps {
+        sh 'docker build -t sabarirko/prt-image .'
+    }
+}
 
- stages {
-
-  stage('Build Docker Image') {
-   steps {
-    sh 'docker build -t prt-image .'
-   }
-  }
-
- }
-
+stage('Push Image') {
+    steps {
+        sh 'docker push sabarirko/prt-image'
+    }
 }
